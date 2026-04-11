@@ -1,0 +1,6 @@
+apple
+banana
+ant
+cat
+album
+dog
