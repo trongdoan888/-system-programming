@@ -8,7 +8,7 @@ def tao_file_du_lieu(bai_6: list):
     try:
         with open(FILE_NAME, 'w') as f:
             for ki_tu in list_char:
-                f.write(f"{ki_tu}")
+                f.write(f"{ki_tu}\n")
             
             print(f"Đã tạo file {FILE_NAME} thành công.")
     except Exception as e:
@@ -24,6 +24,8 @@ def sap_xep_ki_tu():
     'U': 21, 'V': 22, 'W': 23, 'X': 24, 'Y': 25,
     'Z': 26 }
 
+    reverse_dict = {value: key for key, value in alphabet_dict.items()}
+    
     if not os.path.exists(FILE_NAME):
         print("File không tồn tại!")
         return
@@ -32,7 +34,7 @@ def sap_xep_ki_tu():
 
     try:
         with open(FILE_NAME, 'r', encoding ='utf-8') as f:
-            list_ban_dau = f.read()
+            list_ban_dau = f.read().replace("\n","")
 
 
         for ki_tu in list_ban_dau:
@@ -42,11 +44,24 @@ def sap_xep_ki_tu():
         
         list_result.sort()
 
-        for n,vi_tri in list_result:
+        for n,vi_tri in enumerate(list_result):
             
-            ki_tu = alphabet_dict[vi_tri]
+            ki_tu = reverse_dict[vi_tri]
             list_result[n] = ki_tu
+        
+        with open(FILE_NAME, 'w', encoding = 'utf-8') as f:
+            for phan_tu in list_result:
+                f.write(f"{phan_tu}\n")
+        
+        print(f"Chỉnh sửa thành công.....")
+    except Exception as e:
+        print(f"Lỗi: {e}")
 
+if __name__ == "__main__":
+    
+    bai_6 = input("Nhập chuỗi kí tự, cách nhau bởi dấu cách: ")
 
+    bai_6 = bai_6.split()
             
-
+    tao_file_du_lieu( bai_6)
+    sap_xep_ki_tu()
