@@ -32,9 +32,19 @@ def tim_max_min():
         min = list_data[0]
         count_min = list_data.count(min)
         count_max = list_data.count(max)
+
+        while min in list_data:
+            list_data.remove(min)
+        
+        print(list_data)
+        min_two = list_data[0]
+
+        count_min_two = list_data.count(min_two)
         
 
+        
         print(f"Gía trị min: {min} | Với số lần xuất hiện: {count_min}")
+        print(f"Gía trị nhỏ thứ 2 là: {min_two} | Với số lần xuất hiện: {count_min_two}")
         print(f"Gía trị max: {max} | Với số lần xuát hiện: {count_max}") 
     except Exception as e:
         print(f"Lỗi : {e}")
