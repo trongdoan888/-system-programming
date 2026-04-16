@@ -6,7 +6,7 @@ PORT = 5001
 
 server = socket.socket()
 server.bind((HOST, PORT))
-server.listen()
+server.listen() 
 print(f"Server đang lắng nghe trên {HOST}:{PORT}...")
 
 conn, addr = server.accept()
